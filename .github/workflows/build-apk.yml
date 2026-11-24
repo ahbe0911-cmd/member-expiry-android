@@ -5,6 +5,7 @@ on:
     branches: [main, master]
     paths:
       - 'member-expiry-phase5.zip'
+      - 'member-expiry-phase5.b64.txt'
       - 'app/**'
       - 'gradle/**'
       - '*.gradle.kts'
@@ -41,6 +42,11 @@ jobs:
         run: |
           set -euo pipefail
           archive=member-expiry-phase5.zip
+          decoded=false
+          if [[ ! -f "$archive" && -f member-expiry-phase5.b64.txt && ! -f app/build.gradle.kts ]]; then
+            base64 --decode member-expiry-phase5.b64.txt > "$archive"
+            decoded=true
+          fi
           if [[ -f "$archive" && ! -f app/build.gradle.kts ]]; then
             echo "a6680f89cab6db65daa581b0e9243d230ebe74e36d1aedbb442d565260e085ce  $archive" | sha256sum -c -
             python3 - <<'PY'
@@ -58,6 +64,7 @@ jobs:
                   target.parent.mkdir(parents=True, exist_ok=True)
                   target.write_bytes(z.read(entry))
           PY
+            if [[ "$decoded" == true ]]; then rm -- "$archive"; fi
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add --all
