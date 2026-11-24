@@ -6,6 +6,7 @@ on:
     paths:
       - 'member-expiry-phase5.zip'
       - 'member-expiry-phase5.b64.txt'
+      - '.github/workflows/build-apk.yml'
       - 'app/**'
       - 'gradle/**'
       - '*.gradle.kts'
@@ -93,6 +94,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.13'
+      - name: Setup Android SDK command-line tools
+        uses: android-actions/setup-android@v4
       - name: Install Android SDK
         run: sdkmanager "platforms;android-36" "build-tools;35.0.0" "platform-tools"
       - name: Generate official Gradle Wrapper if absent
@@ -161,6 +164,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.13'
+      - name: Setup Android SDK command-line tools
+        uses: android-actions/setup-android@v4
       - name: Install Android SDK
         run: sdkmanager "platforms;android-36" "build-tools;35.0.0" "platform-tools"
       - name: Enable KVM
