@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مدیریت تاریخ انقضای اعضا</string>
+    <string name="phase_label">فاز ۴ | مدیریت اعضا</string>
+    <string name="phase_message">مدیریت آفلاین اعضا و تاریخ انقضا</string>
+    <string name="phase_details">نسخه ۰٫۴٫۰ — محیط فارسی و راست‌به‌چپ</string>
+    <string name="registration">ثبت‌نام در سامانه سامان</string>
+    <string name="expiry_channel_name">یادآوری تاریخ انقضا</string>
+    <string name="expiry_channel_description">اعلان روزانه تعداد اعضای منقضی و در انتظار تمدید</string>
+    <string name="expiry_notification_title">%1$s نفر در انتظار تمدید</string>
+    <string name="expiry_notification_body">انقضای امروز: %1$s نفر | معوقات: %2$s نفر</string>
+    <string name="expiry_check_queued">درخواست بررسی ثبت شد.</string>
+    <string name="no_browser">مرورگر سازگار در دستگاه پیدا نشد.</string>
+    <string name="notification_settings_unavailable">تنظیمات اعلان در دسترس نیست.</string>
+</resources>
